@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="200.0" prefWidth="550.0" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="datawrangling.controllers.PrimaryController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <HBox spacing="10.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="110.0" text="Input folder path:" />
+            <TextField fx:id="inputPath" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\DataWrangling\src\main\java\inputtexts\" />
+         </children>
+      </HBox>
+      <HBox spacing="10.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="110.0" text="Output folder path:" />
+            <TextField fx:id="outputPath" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\DataWrangling\src\main\java\outputtexts\" />
+         </children>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="380.0">
+         <children>
+            <Label id="msgLabel" fx:id="msgLabel" prefHeight="17.0" prefWidth="490.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" spacing="60.0">
+         <children>
+            <Button onAction="#transcribe" prefHeight="35.0" prefWidth="120.0" text="Transcribe" />
+            <Button onAction="#exit" prefHeight="35.0" prefWidth="120.0" text="Exit" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
