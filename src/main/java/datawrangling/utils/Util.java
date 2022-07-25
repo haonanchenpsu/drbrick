@@ -24,22 +24,16 @@ public class Util {
 
     /**
      * Get the list of file names under the input file
+     *
      * @return a list of file names
      */
     public static List<String> getFileNames(String inputFolder) {
-
-        File inputFolderDir = new File(convertFilePath(inputFolder));
-
-        if (!inputFolderDir.exists()) {
-            System.out.println("The input folder does not exist.");
-            return new ArrayList<>();
-        }
-
         File[] inputDocNames = new File(inputFolder).listFiles();
 
         List<String> fileNames = new ArrayList<>();
-        if (inputDocNames != null && inputDocNames.length > 0) {
-            for (File document : inputDocNames) {
+        for (File document : inputDocNames) {
+            String fileExtension = document.getName().substring(document.getName().lastIndexOf('.'));
+            if (fileExtension.equals(".docx")) {
                 fileNames.add(document.getName());
             }
         }
@@ -59,6 +53,7 @@ public class Util {
 
     /**
      * Get the paragraphs from the document
+     *
      * @param fileDir name of the file
      * @return a list of paragraph
      */
@@ -85,44 +80,6 @@ public class Util {
             e.printStackTrace();
         }
         return ignoredWords;
-    }
-
-    public static void addIgnoredWord(String word) {
-        File file = new File(IGNORED_WORDS_FILE_DIR);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-            writer.write(word + "\r\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    private static void updateWordFile(List<String> updatedWordList) {
-        File file = new File(IGNORED_WORDS_FILE_DIR);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-            clearFile();
-            for (String ignoredWord : updatedWordList) {
-                writer.write(ignoredWord + "\r\n");
-            }
-            writer.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void removeIgnoredWord(String word) {
-        List<String> ignoredWords = Util.loadIgnoredWords();
-        ignoredWords.remove(word);
-        updateWordFile(ignoredWords);
-    }
-    
-    private static void clearFile() {
-        try (FileWriter fileWriter = new FileWriter(IGNORED_WORDS_FILE_DIR)) {
-            fileWriter.write("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static boolean sanityCheckFolderDir(String dir, boolean isInput, boolean isEmpty) {

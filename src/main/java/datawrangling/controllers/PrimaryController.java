@@ -24,16 +24,19 @@ public class PrimaryController {
     private void transcribe() {
         msgLabel.setText("");
 
+        // Get the input-dir and output-dir from GUI
         String inputFolderDir = Util.convertFilePath(inputPath.getText().trim());
         String outputFolderDir = Util.convertFilePath(outputPath.getText().trim());
 
+        // Notify user when the input-dir is empty
         if (inputFolderDir.isEmpty()) {
             msgLabel.setText("The input folder directory is empty. Please try again.");
             return;
         }
 
+        // Notify user when the input-dir does not exist
         if (!Util.sanityCheckFolderDir(inputFolderDir, true, false)) {
-            msgLabel.setText("The input folder directory is incorrect. Please try again.");
+            msgLabel.setText("The input folder directory does not exist. Please try again.");
             return;
         }
 
@@ -44,22 +47,15 @@ public class PrimaryController {
             outputFolderDir = parentFile.concat(fileName + " Result" + "/");
             Util.sanityCheckFolderDir(outputFolderDir, false, true);
         } else {
-            if (Util.sanityCheckFolderDir(outputFolderDir, false, false)) {
-                msgLabel.setText("The output folder directory is incorrect. Please try again.");
+            if (!Util.sanityCheckFolderDir(outputFolderDir, false, false)) {
+                msgLabel.setText("The output folder directory is incorrect. (You can leave it blank if the issue can't be solved.)");
                 return;
             }
         }
 
+        // Convert docx files into xlsx files
         List<String> inputDocNames = Util.getFileNames(inputFolderDir);
-        inputDocNames.remove(".DS_Store"); // Ignore the auto-generated file in Finder
-
-        if (inputDocNames.isEmpty()) {
-            msgLabel.setText("The input folder is empty.");
-            return;
-        }
-
         for (String fileName : inputDocNames) {
-            msgLabel.setText("Converting " + fileName + " to xlsx...");
             List<XWPFParagraph> paragraphs = Util.readDocx(inputFolderDir + fileName);
             ExcelUtil.writeExcel(paragraphs, outputFolderDir + fileName.substring(0, fileName.lastIndexOf('.')) + ".xlsx");
         }

@@ -18,7 +18,7 @@ public class BaseApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("primary.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 550, 200);
 
-        stage.setTitle("DataWrangling");
+        stage.setTitle("Fam Best Transcriber");
         stage.setScene(scene);
         stage.show();
         stage.setAlwaysOnTop(true);
