@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>DataWrangling</groupId>
-    <artifactId>DataWrangling</artifactId>
+    <groupId>FamBestTranscriber</groupId>
+    <artifactId>FamBestTranscriber</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!-- This description text is included in the Windows installer by default, see windows-jpackage.txt -->
-    <description>For research purpose</description>
+    <description>Transcribe docs into Excel sheets.</description>
 
     <properties>
         <!-- Set this to the class with the main method for your application -->
         <main-class>datawrangling.BaseApplication</main-class>
         <!-- Change your app's name to something interesting... but you might want to avoid spaces
         just to safe for compatibility across operating systems. -->
-        <app.name>DataWrangling</app.name>
+        <app.name>FamBestTranscriber</app.name>
         <!-- This converts the build timestamp to a Windows-installer friendly version number (minute level resolution).
         Note that Maven generated timestamp is in UTC, not local time. For more information see:
          https://docs.microsoft.com/en-us/windows/win32/msi/productversion
