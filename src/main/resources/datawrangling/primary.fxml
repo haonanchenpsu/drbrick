@@ -15,13 +15,13 @@
       <HBox spacing="10.0">
          <children>
             <Label prefHeight="26.0" prefWidth="110.0" text="Input folder path:" />
-            <TextField fx:id="inputPath" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\DataWrangling\src\main\java\inputtexts\" />
+            <TextField fx:id="inputPath" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\FolderA\" />
          </children>
       </HBox>
       <HBox spacing="10.0">
          <children>
             <Label prefHeight="26.0" prefWidth="110.0" text="Output folder path:" />
-            <TextField fx:id="outputPath" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\DataWrangling\src\main\java\outputtexts\" />
+            <TextField fx:id="outputPath" prefHeight="26.0" prefWidth="380.0" promptText="C:\Documents\FolderB\" />
          </children>
       </HBox>
       <HBox prefHeight="0.0" prefWidth="380.0">
